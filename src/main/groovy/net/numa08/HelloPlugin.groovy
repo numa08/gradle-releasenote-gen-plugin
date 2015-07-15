@@ -1,4 +1,4 @@
-package com.example
+package net.numa08
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project

@@ -1,4 +1,4 @@
-package com.example
+package net.numa08
 
 import org.gradle.testfixtures.ProjectBuilder
 import spock.lang.Specification
@@ -11,7 +11,7 @@ class HelloPluginSpec extends Specification {
 
         when:
         project.with {
-            apply plugin: 'com.example.hello'
+            apply plugin: 'net.numa08.hello'
         }
 
         then:
