@@ -4,9 +4,18 @@ import net.numa08.genrelease._
 
 import scala.util.control.Exception._
 
-class GitLogParser extends Parser {
+case class GitLogParser(configuration: Configuration) extends Parser {
 
-  override def parse(source: String): Either[Throwable, ReleaseNote] = ???
+  override def parse(source: String): (ReleaseNote, Seq[ParseError]) = {
+    val lines = source.split("\n")
+    val parses = lines.zip(lines.map(GitLogParser.parseLine))
+
+    (new ReleaseNote {
+      override val fixes: Seq[Fix] = parses.collect { case (_, Right(f: Fix)) => f }
+      override val features: Seq[Feature] = parses.collect { case (_, Right(f: Feature)) => f }
+      override val version: String = configuration.version
+    }, parses.collect { case (l, Left(e)) => ParseError(l, e) })
+  }
 
 }
 
