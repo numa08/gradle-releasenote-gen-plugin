@@ -1,4 +1,4 @@
-package net.numa08
+package net.numa08.genrelease
 
 import org.gradle.api.Plugin
 import org.gradle.api.Project

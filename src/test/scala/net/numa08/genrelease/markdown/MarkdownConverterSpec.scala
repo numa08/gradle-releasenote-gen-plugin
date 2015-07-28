@@ -25,30 +25,7 @@ class MarkdownConverterSpec extends FlatSpec with Matchers {
     }
 
     val markdown = new MarkdownConverter().convert(note)
-    assert(markdown ==
-      """
-        |## 新機能
-        |
-        |### 微妙な機能
-        |
-        | - いい感じやで
-        |
-        |### むっちゃ使う機能
-        |
-        | - 驚天動地の最新機能
-        | - めっちゃ使いやすくなった
-        |
-        |## 不具合修正
-        |
-        |### ほげ機能
-        |
-        | - 今度こそ大丈夫
-        |
-        |### なんとか機能
-        |
-        | - もうクラッシュなんてしない
-        | - もう大丈夫
-        |
-        | """.stripMargin)
+    println(markdown)
+
   }
 }

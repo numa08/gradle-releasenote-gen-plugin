@@ -1,4 +1,4 @@
-package net.numa08
+package net.numa08.genrelease
 
 import org.gradle.testfixtures.ProjectBuilder
 import spock.lang.Specification
