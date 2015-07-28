@@ -1,8 +1,11 @@
 package net.numa08.genrelease.git
 
 import net.numa08.genrelease.{Configuration, Feature, Fix, UnKnownTypeException}
+import org.junit.runner.RunWith
+import org.scalatest.junit.JUnitRunner
 import org.scalatest.{FlatSpec, Matchers}
 
+@RunWith(classOf[JUnitRunner])
 class GitLogParserSpec extends FlatSpec with Matchers{
 
   "GitLogParser" should "parse line" in {
