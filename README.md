@@ -7,6 +7,21 @@ Tasks
 --------
 
  - generateReleaseNote
+ 
+Installation
+----------
+
+```groovy
+buildscript {
+    respositories {
+        maven { url "https://dl.bintray.com/numa08/maven" }
+    }
+    dependencies {
+        classpath 'net.numa08:genrelease:$version'
+    }
+}
+apply plugin: 'net.numa08.genrelease'
+```
 
 Configurations
 --------------
