@@ -1,5 +1,5 @@
 language: java
-jdk: oraclejdk7
+jdk: oraclejdk8
 
 install:
 - ./gradlew install
@@ -14,3 +14,4 @@ after_success:
 env:
   global:
   - TERM=dumb
+  - secure: YcibhZQl3NUprGFVF6TxsKtv/6ZlrDsAOem0A8UrdPsuNkB6gSZGbuQSIUgxo8o4jOyUftORI8llDh0HSG8oAl1xXm3ezhgaajtt0eCfOaw72okzF6TWzmD9A+BtEWBgHnqcTF5xsmeL+P2WhzAEz9nhoVlX3qh9WvWoFqMfIr6YPAdhRZxeeFCEOJ4KFTAY/F1eojEPf2YhkeFI+k6+fXwqb2rx40b8a/6So/NmKUgbCM+XBadY4UV7Q4CzFS1qsBUmBiawU7NKM1JCsnP+0jGLn9amjTmY4h1Y/+oD8m+ST94Yn/Lhw7QkOb4r/mxmkAcWMxW06loEhuCzjzZxtvmRNxlfrEuodU5r9VohVG5WxmI+bsp2JBql5Q/Ce5TJF8FJ2CFjFU5FJeBzg1DCuNO96QCRFY1FCRcNtPEYigHtPtfjL69ljrWUEwpJcAtnv7aUBmy04zabE1ADBMLY7EN4EyECmzfi6SyhinEdf4YHuxPAugo9x+tQHs56I0VbqwrvjXJTOd2mdhOx6y/ZGcqSyK+i2tUXXAx/WUtz6WWqNlLO4sejESlCI+cOglmRASDKVznXw0rLHRhU/+HzluCLS2v/b0hxRHIxErBCVSY6tDxLqommiA/Zs6Dzh8rttGnKSWHNFywfXByMfX83zFPxOF4FqcDPCv4Hr+i+hjg=
