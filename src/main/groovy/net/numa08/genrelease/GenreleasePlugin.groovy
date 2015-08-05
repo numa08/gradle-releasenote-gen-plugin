@@ -8,12 +8,12 @@ import org.gradle.api.Task
 
 class GenreleasePlugin implements Plugin<Project> {
 
+    public static final String Property_Name = "releaseNote"
     public static final String TASK_NAME = "genReleaseNote"
-
     @Override
     void apply(Project project) {
-        project.extensions.create(TASK_NAME, GenreleasePluginExtension)
-        final GenreleasePluginExtension extension = project.extensions.genReleaseNote
+        project.extensions.create(Property_Name, GenreleasePluginExtension)
+        final GenreleasePluginExtension extension = project.extensions."$Property_Name"
         final Task createdTask = project.task(TASK_NAME) << { Task task ->
             final Configuration configuration = new Configuration() {
                 @Override
