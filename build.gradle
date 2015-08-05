@@ -2,7 +2,7 @@ plugins {
     id 'groovy'
     id 'scala'
     id 'maven-publish'
-    id 'com.jfrog.bintray' version '1.0'
+    id 'com.jfrog.bintray' version '1.2'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -81,7 +81,7 @@ bintray {
     publications = ['maven']
     pkg {
         repo = 'maven'
-        name = project.name
+        name = project.property('gradle.plugin.id')
         version {
             attributes = ['gradle-plugin': "${project.property('gradle.plugin.id')}:${project.group}:${project.name}"]
         }
