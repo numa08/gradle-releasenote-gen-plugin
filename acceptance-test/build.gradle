@@ -6,7 +6,7 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath group:'net.numa08', name:'gradle-releasenote-gen-plugin', version:"$version"
+        classpath group: 'net.numa08', name: 'genrelease', version: "$version"
     }
 }
 
