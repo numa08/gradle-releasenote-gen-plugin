@@ -13,19 +13,19 @@ class GenreleasePlugin implements Plugin<Project> {
     @Override
     void apply(Project project) {
         project.extensions.create(Property_Name, GenreleasePluginExtension)
-        final GenreleasePluginExtension extension = project.extensions."$Property_Name"
-        final Task createdTask = project.task(TASK_NAME) << { Task task ->
-            final Configuration configuration = new Configuration() {
+        def extension = project.extensions."$Property_Name"
+        def createdTask = project.task(TASK_NAME) << { Task task ->
+            def configuration = new Configuration() {
                 @Override
                 String version() {
-                    return extension.version()
+                    return extension.version
                 }
             }
 
-            var parser = new GitLogParser(configuration)
-            var notes = parser.parse(extension.source())
+            def parser = new GitLogParser(configuration)
+            def notes = parser.parse(extension.source)
             if (notes._1() != null) {
-                var markdown = new MarkdownConverter().convert(notes._1())
+                def markdown = new MarkdownConverter().convert(notes._1())
                 println(markdown)
             }
         }

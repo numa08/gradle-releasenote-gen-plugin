@@ -1,5 +1,6 @@
 package net.numa08.genrelease
 
+import org.gradle.api.Task
 import org.gradle.testfixtures.ProjectBuilder
 import spock.lang.Specification
 
@@ -37,6 +38,8 @@ feat/ときどき使う機能: 驚天動地の新機能を実装しました。
         }
 
         then:
-        project.tasks.findByName("genReleaseNote") != null
+        Task task = project.tasks.findByName("genReleaseNote")
+        assert task != null
+        task.execute()
     }
 }
