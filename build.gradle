@@ -34,6 +34,9 @@ task sourcesJar(type: Jar) {
     classifier = 'sources'
 }
 
+compileGroovy.dependsOn compileScala
+compileTestGroovy.dependsOn compileTestScala
+
 publishing {
     publications {
         maven(MavenPublication) {
