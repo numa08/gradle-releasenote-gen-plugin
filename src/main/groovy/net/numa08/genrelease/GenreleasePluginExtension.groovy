@@ -5,4 +5,6 @@ class GenreleasePluginExtension {
     String version
 
     String source
+
+    File output
 }

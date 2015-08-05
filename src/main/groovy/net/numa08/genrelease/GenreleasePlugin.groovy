@@ -1,5 +1,6 @@
 package net.numa08.genrelease
 
+import groovy.io.GroovyPrintStream
 import net.numa08.genrelease.git.GitLogParser
 import net.numa08.genrelease.markdown.MarkdownConverter
 import org.gradle.api.Plugin
@@ -26,7 +27,13 @@ class GenreleasePlugin implements Plugin<Project> {
             def notes = parser.parse(extension.source)
             if (notes._1() != null) {
                 def markdown = new MarkdownConverter().convert(notes._1())
-                println(markdown)
+                def output = extension.output != null ? new FileOutputStream(extension.output) : System.out
+                def printStream = new GroovyPrintStream(output)
+                try {
+                    printStream.print(markdown)
+                } finally {
+                    output.close()
+                }
             }
         }
 
