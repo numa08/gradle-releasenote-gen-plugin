@@ -1,40 +1,32 @@
 package net.numa08.genrelease.markdown
 
-import net.numa08.genrelease.{NoteConverter, ReleaseNote, ReleaseType}
+import net.numa08.genrelease._
 
 class MarkdownConverter extends NoteConverter {
 
-  override def convert(note: ReleaseNote): String = {
-    val features = note.features.groupBy(_.scope)
-    val fixes = note.fixes.groupBy(_.scope)
+  override def convert(note: ReleaseNote): String = note.releases.map(makeMarkdown).mkString
 
-    def makeMarkdown(keys: Iterable[String], notes: Map[String, Seq[ReleaseType]]): String = {
-      (for (key <- keys) yield {
-        val indexes = notes(key).map(_.subject).mkString(" - ", "\n - ", "")
-        s"""
-           |### $key
-            |
-            |$indexes
-            |""".stripMargin
-      }).mkString("")
-    }
-
-    val featuresNote = if (features.keys.isEmpty) ""
-    else {
+  def make(release: Map[Scope, Seq[ReleaseType]]): String = {
+    (for (k <- release.keys) yield {
+      val i = release(k).map(_.subject).mkString(" - ", "\n - ", "")
       s"""
-         |## 新機能
-         |${makeMarkdown(features.keys, features)}
-      """.stripMargin
-    }
-    val fixesNote = if (fixes.keys.isEmpty) ""
-    else {
-      s"""
-         |## 不具合修正
-         |${makeMarkdown(fixes.keys, fixes)}
+         |### ${k.scope}
+         |$i
        """.stripMargin
-    }
-
-    featuresNote + fixesNote
+    }).mkString
   }
 
+  def makeMarkdown(release: Release): String = release match {
+    case Empty => ""
+    case Features(r) =>
+      s"""
+         |## 新機能
+         |${make(r)}
+       """.stripMargin
+    case Fixes(r) =>
+      s"""
+         |## 不具合修正
+         |${make(r)}
+       """.stripMargin
+  }
 }
