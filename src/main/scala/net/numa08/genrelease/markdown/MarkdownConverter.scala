@@ -19,13 +19,22 @@ class MarkdownConverter extends NoteConverter {
       }).mkString("")
     }
 
+    val featuresNote = if (features.keys.isEmpty) ""
+    else {
+      s"""
+         |## 新機能
+         |${makeMarkdown(features.keys, features)}
+      """.stripMargin
+    }
+    val fixesNote = if (fixes.keys.isEmpty) ""
+    else {
+      s"""
+         |## 不具合修正
+         |${makeMarkdown(fixes.keys, fixes)}
+       """.stripMargin
+    }
 
-    s"""
-       |## 新機能
-       |${makeMarkdown(features.keys, features)}
-        |## 不具合修正
-        |${makeMarkdown(fixes.keys, fixes)}
-        |""".stripMargin
+    featuresNote + fixesNote
   }
 
 }

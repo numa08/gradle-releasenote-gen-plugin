@@ -5,6 +5,8 @@ import org.junit.runner.RunWith
 import org.scalatest.junit.JUnitRunner
 import org.scalatest.{FlatSpec, Matchers}
 
+import scala.collection.immutable.Stream.Empty
+
 @RunWith(classOf[JUnitRunner])
 class MarkdownConverterSpec extends FlatSpec with Matchers {
 
@@ -27,5 +29,16 @@ class MarkdownConverterSpec extends FlatSpec with Matchers {
     val markdown = new MarkdownConverter().convert(note)
     println(markdown)
 
+  }
+
+  "Empty message" should "export empty markdown" in {
+    val note = new ReleaseNote {
+      override val fixes: Seq[Fix] = Empty
+      override val features: Seq[Feature] = Empty
+      override val version: String = "test"
+    }
+
+    val markdown = new MarkdownConverter().convert(note)
+    assert(markdown.isEmpty)
   }
 }
