@@ -1,3 +1,5 @@
+[ ![Download](https://api.bintray.com/packages/numa08/maven/net.numa08.genrelease/images/download.svg) ](https://bintray.com/numa08/maven/net.numa08.genrelease/_latestVersion)
+
 Gradle Release Note Generator Plugin
 ======================
 
